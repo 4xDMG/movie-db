@@ -1,32 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import store from './redux';
 import createMovieDbClient from './api/movieDb';
+import PopularMovies from './pages/PopularMovies';
 
 const movieDbClient = new createMovieDbClient();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <button onClick={movieDbClient.getPopularMoviesList}>list</button>
-      <button onClick={() => movieDbClient.getMovieDetails(419704)}>details</button>
-      <button onClick={() => movieDbClient.searchMovies('ad astra')}>search</button>
-
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" component={PopularMovies} />
+        </Switch>
+      </BrowserRouter>
+    
+    </Provider>
   );
 }
 

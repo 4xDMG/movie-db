@@ -37,7 +37,12 @@ class MovieDbClient {
   /**
    * Return list of popular movies by page
    */
-  getPopularMoviesList = async () => this.makeFetchRequest(this.buildURL('movie/popular', { page: this.popularPage }), 'Failed to fetch popular movies list');
+  getPopularMoviesList = async () => {
+    const response =  await this.makeFetchRequest(this.buildURL('movie/popular', { page: this.popularPage }), 'Failed to fetch popular movies list')
+    this.popularPage = response.page + 1;
+
+    return response.results;
+  };
 
   /**
    * returns list of search results by page
