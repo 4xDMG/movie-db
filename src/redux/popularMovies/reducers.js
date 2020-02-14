@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux';
-import { FETCH_POPULAR_MOVIES, FETCH_POPULAR_MOVIES_ERROR, FETCH_POPULAR_MOVIES_SUCCESS } from './types';
+import {
+  FETCH_POPULAR_MOVIES,
+  FETCH_POPULAR_MOVIES_ERROR,
+  FETCH_POPULAR_MOVIES_SUCCESS,
+} from './types';
 
 function error(state = null, action) {
   switch (action.type) {
@@ -21,7 +25,7 @@ function list(state = [], action) {
   }
 }
 
-function loading(state=false, action) {
+function loading(state = false, action) {
   switch (action.type) {
     case FETCH_POPULAR_MOVIES:
       return true;

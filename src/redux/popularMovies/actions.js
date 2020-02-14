@@ -1,4 +1,8 @@
-import { FETCH_POPULAR_MOVIES, FETCH_POPULAR_MOVIES_ERROR, FETCH_POPULAR_MOVIES_SUCCESS } from './types';
+import {
+  FETCH_POPULAR_MOVIES,
+  FETCH_POPULAR_MOVIES_ERROR,
+  FETCH_POPULAR_MOVIES_SUCCESS,
+} from './types';
 
 export const fetchPopularMovies = () => ({
   type: FETCH_POPULAR_MOVIES,

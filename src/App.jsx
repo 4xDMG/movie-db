@@ -1,23 +1,19 @@
 import React from 'react';
-
-import './App.css';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import store from './redux';
-import createMovieDbClient from './api/movieDb';
 import PopularMovies from './pages/PopularMovies';
-
-const movieDbClient = new createMovieDbClient();
+import MovieDetails from './pages/MovieDetails';
 
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
+          <Route path="/:movieId" component={MovieDetails} />
           <Route path="/" component={PopularMovies} />
         </Switch>
       </BrowserRouter>
-    
     </Provider>
   );
 }
