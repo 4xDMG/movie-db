@@ -1,6 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import createMovieDbClient from './api/movieDb';
+
+const movieDbClient = new createMovieDbClient();
 
 function App() {
   return (
@@ -19,6 +22,10 @@ function App() {
           Learn React
         </a>
       </header>
+      <button onClick={movieDbClient.getPopularMoviesList}>list</button>
+      <button onClick={() => movieDbClient.getMovieDetails(419704)}>details</button>
+      <button onClick={() => movieDbClient.searchMovies('ad astra')}>search</button>
+
     </div>
   );
 }
