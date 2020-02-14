@@ -11,10 +11,7 @@ export default function*() {
 
 function* doFetchMovieDetails({ payload: { movieId } }) {
   try {
-    const movieDetails = yield call(
-      movieDbClient.getMovieDetails.bind(movieDbClient),
-      movieId,
-    );
+    const movieDetails = yield call(movieDbClient.getMovieDetails, movieId);
 
     yield put(fetchMovieDetailsSuccess(movieId, movieDetails));
   } catch (err) {

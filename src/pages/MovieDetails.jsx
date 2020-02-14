@@ -8,7 +8,6 @@ function MovieDetails({ match }) {
   );
   const dispatch = useDispatch();
   const movieDetails = useSelector(selector);
-  console.log(match);
 
   useEffect(() => {
     if (!movieDetails.data) {

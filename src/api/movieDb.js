@@ -4,7 +4,9 @@ class MovieDbClient {
     this.API_KEY = process.env.REACT_APP_MOVIE_DB_API_KEY;
 
     this.popularPage = 1;
+
     this.searchPage = 1;
+    this.lastQuery = '';
   }
 
   /**
@@ -60,11 +62,20 @@ class MovieDbClient {
   /**
    * returns list of search results by page
    */
-  searchMovies = async query =>
-    this.makeFetchRequest(
+  searchMovies = async query => {
+    if (query !== this.lastQuery) {
+      this.searchPage = 1;
+    }
+
+    const response = await this.makeFetchRequest(
       this.buildURL('search/movie', { page: this.searchPage, query }),
       'Failed to fetch search results',
     );
+
+    this.searchPage = response.page + 1;
+
+    return response.results;
+  };
 }
 
 export default MovieDbClient;
