@@ -36,6 +36,13 @@ h6 {
   font-family: Montserrat, sans-serif;
 }
 
+h2 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 30px;
+}
+
 h3 {
   font-style: normal;
   font-weight: bold;
@@ -52,6 +59,7 @@ p {
 }
 
 small {
+  display: block;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;

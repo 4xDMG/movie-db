@@ -13,8 +13,10 @@ const months = [
   'December',
 ];
 
-function formatDate(dateString) {
+function formatDate(dateString, yearOnly = false) {
   const date = new Date(dateString);
+
+  if (yearOnly) return date.getFullYear();
 
   return `${months[date.getMonth()]} ${date.getFullYear()}`;
 }

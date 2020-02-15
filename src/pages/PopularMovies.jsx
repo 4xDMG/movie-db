@@ -8,6 +8,7 @@ import {
   searchResultsSelectors,
 } from '../redux';
 import { historyType } from '../propTypes';
+import Loading from '../components/Loading';
 import SearchHeader from '../components/SearchHeader';
 import MovieListItem from '../components/MovieListItem';
 import './style.css';
@@ -40,7 +41,6 @@ function PopularMovies({ history }) {
           dataLength={popularMovies.list.length}
           endMessage={<p>No more popular movies</p>}
           hasMore={popularMovies.hasMore}
-          loader={'Loading...'}
           next={getPopularMovies}
         >
           {popularMovies.list.map(movie => (
@@ -51,7 +51,7 @@ function PopularMovies({ history }) {
             />
           ))}
         </InfiniteScroll>
-        {popularMovies.loading ? 'Loading...' : null}
+        {popularMovies.loading ? <Loading /> : null}
       </section>
     </div>
   );
