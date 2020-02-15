@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import {
   popularMoviesActions,
   popularMoviesSelectors,
@@ -7,10 +8,18 @@ import {
   searchResultsSelectors,
 } from '../redux';
 import { historyType } from '../propTypes';
+import SearchHeader from '../components/SearchHeader';
+import MovieListItem from '../components/MovieListItem';
+import './style.css';
 
 function PopularMovies({ history }) {
   const dispatch = useDispatch();
   const popularMovies = useSelector(popularMoviesSelectors.selectPopularMovies);
+
+  const getPopularMovies = useCallback(
+    () => dispatch(popularMoviesActions.fetchPopularMovies()),
+    [dispatch],
+  );
 
   const getSearchResults = useCallback(
     e => dispatch(searchResultsActions.fetchSearchResults(e.target.value)),
@@ -18,20 +27,32 @@ function PopularMovies({ history }) {
   );
 
   useEffect(() => {
-    dispatch(popularMoviesActions.fetchPopularMovies());
-  }, [dispatch]);
+    getPopularMovies();
+  }, [getPopularMovies]);
 
   return (
     <div className="App">
-      <input palceholder="Search" onChange={getSearchResults} />
-      <ul>
-        {popularMovies.list.map(movie => (
-          <li key={movie.id} onClick={() => history.push(`/${movie.id}`)}>
-            {movie.title}
-          </li>
-        ))}
-      </ul>
-      {popularMovies.loading ? 'Loading...' : null}
+      <SearchHeader onChange={getSearchResults} />
+      <section className="popular-movies-container">
+        <h3>Popular Movies</h3>
+        <InfiniteScroll
+          className="popular-movies-list"
+          dataLength={popularMovies.list.length}
+          endMessage={<p>No more popular movies</p>}
+          hasMore={popularMovies.hasMore}
+          loader={'Loading...'}
+          next={getPopularMovies}
+        >
+          {popularMovies.list.map(movie => (
+            <MovieListItem
+              key={movie.id}
+              movie={movie}
+              onClick={() => history.push(`/${movie.id}`)}
+            />
+          ))}
+        </InfiniteScroll>
+        {popularMovies.loading ? 'Loading...' : null}
+      </section>
     </div>
   );
 }

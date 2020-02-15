@@ -11,9 +11,9 @@ export default function*() {
 
 function* doFetchPopularMovies() {
   try {
-    const popularMovies = yield call(movieDbClient.getPopularMoviesList);
+    const { list, hasMore } = yield call(movieDbClient.getPopularMoviesList);
 
-    yield put(fetchPopularMoviesSuccess(popularMovies));
+    yield put(fetchPopularMoviesSuccess(list, hasMore));
   } catch (err) {
     console.error(err);
 

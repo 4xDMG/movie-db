@@ -1,0 +1,41 @@
+.movie-list-item {
+  margin: 0 12px 24px;
+  margin-bottom: 24px;
+  max-width: 155px;
+  position: relative;
+}
+
+.movie-list-item .movie-list-item-image-container {
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  height: 233px;
+  transition: all 0.2s ease-in-out;
+  width: 155px;
+}
+
+.movie-list-item .movie-list-item-image {
+  border-radius: inherit;
+  height: 233px;
+  /* position: absolute; */
+  width: 155px;
+}
+
+.movie-list-item .movie-list-item-image-container:hover {
+  transform: scale(1.05);
+  transform-origin: center;
+}
+
+.movie-list-item .movie-rating {
+  border-radius: 8px;
+  color: #fff;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: bold;
+  height: 20px;
+  left: 5px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 5px;
+  width: 40px;
+}

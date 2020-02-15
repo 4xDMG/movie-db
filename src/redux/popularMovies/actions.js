@@ -9,9 +9,9 @@ export const fetchPopularMovies = () => ({
   payload: {},
 });
 
-export const fetchPopularMoviesSuccess = movies => ({
+export const fetchPopularMoviesSuccess = (movies, hasMore) => ({
   type: FETCH_POPULAR_MOVIES_SUCCESS,
-  payload: { movies },
+  payload: { movies, hasMore },
 });
 
 export const fetchPopularMoviesError = error => ({

@@ -4,6 +4,7 @@ class MovieDbClient {
     this.API_KEY = process.env.REACT_APP_MOVIE_DB_API_KEY;
 
     this.popularPage = 1;
+    this.hasMorePopular = true;
 
     this.searchPage = 1;
     this.lastQuery = '';
@@ -15,7 +16,7 @@ class MovieDbClient {
    */
   buildQueryStringParameters = queryStringParameters =>
     Object.entries(queryStringParameters).reduce(
-      (acc, [key, value]) => `${acc}&${key}=${value}`,
+      (acc, [key, value]) => `${acc}&${key}=${encodeURIComponent(value)}`,
       '',
     );
 
@@ -50,13 +51,19 @@ class MovieDbClient {
    * Return list of popular movies by page
    */
   getPopularMoviesList = async () => {
-    const response = await this.makeFetchRequest(
-      this.buildURL('movie/popular', { page: this.popularPage }),
-      'Failed to fetch popular movies list',
-    );
-    this.popularPage = response.page + 1;
+    if (this.hasMorePopular) {
+      const response = await this.makeFetchRequest(
+        this.buildURL('movie/popular', { page: this.popularPage + 1 }),
+        'Failed to fetch popular movies list',
+      );
+      this.popularPage = response.page;
+      if (this.popularPage === response.total_pages) {
+        this.hasMorePopular = false;
+      }
 
-    return response.results;
+      return { list: response.results, hasMore: this.hasMorePopular };
+    }
+    return { list: [], hasMore: this.hasMorePopular };
   };
 
   /**

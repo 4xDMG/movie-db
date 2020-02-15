@@ -16,6 +16,15 @@ function error(state = null, action) {
   }
 }
 
+function hasMore(state = true, action) {
+  switch (action.type) {
+    case FETCH_POPULAR_MOVIES_SUCCESS:
+      return action.payload.hasMore;
+    default:
+      return state;
+  }
+}
+
 function list(state = [], action) {
   switch (action.type) {
     case FETCH_POPULAR_MOVIES_SUCCESS:
@@ -36,4 +45,4 @@ function loading(state = false, action) {
   }
 }
 
-export default combineReducers({ error, list, loading });
+export default combineReducers({ error, hasMore, list, loading });

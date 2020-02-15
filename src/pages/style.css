@@ -1,0 +1,13 @@
+.popular-movies-container {
+  padding: 24px 16px;
+  margin: auto;
+  max-width: 800px;
+}
+
+.popular-movies-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 -12px;
+  padding-top: 6px;
+}
