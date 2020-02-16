@@ -1,3 +1,12 @@
+# Movie DB
+
+## Set up
+
+1. `cp .env.example .env`
+2. Fill in `.env` credentials
+3. `yarn` or `npm i` to install dependancies
+4. `yarn start` or `npm start` to run app
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
