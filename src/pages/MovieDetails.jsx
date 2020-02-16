@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { movieDetailsActions, movieDetailsSelectors } from '../redux';
 import { historyType, matchType } from '../propTypes';
 import { BackArrow } from '../assets';
+import Button from '../components/Button';
 import Loading from '../components/Loading';
 import {
   BACKDROP_IMAGE_BASE_URL,
@@ -59,15 +60,9 @@ function MovieDetails({ history, match }) {
           backgroundImage: `url(${BACKDROP_IMAGE_BASE_URL}${backdrop_path})`,
         }}
       />
-      <div
-        className="back-button"
-        role="button"
-        tabIndex="0"
-        onClick={goBack}
-        onKeyPress={goBack}
-      >
+      <Button className="back-button" onClick={goBack}>
         <BackArrow />
-      </div>
+      </Button>
       <div className="movie-details-info">
         <div className="movie-details-info-header">
           <img

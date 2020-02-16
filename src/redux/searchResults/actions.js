@@ -1,8 +1,14 @@
 import {
+  CLEAR_SEARCH_RESULTS,
   FETCH_SEARCH_RESULTS,
   FETCH_SEARCH_RESULTS_ERROR,
   FETCH_SEARCH_RESULTS_SUCCESS,
 } from './types';
+
+export const clearSearchResults = () => ({
+  type: CLEAR_SEARCH_RESULTS,
+  payload: {},
+});
 
 export const fetchSearchResults = query => ({
   type: FETCH_SEARCH_RESULTS,

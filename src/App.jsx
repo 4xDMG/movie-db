@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import store from './redux';
-import PopularMovies from './pages/PopularMovies';
+import Home from './pages/Home';
 import MovieDetails from './pages/MovieDetails';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/:movieId" component={MovieDetails} />
-          <Route path="/" component={PopularMovies} />
+          <Route path="/" component={Home} />
         </Switch>
       </BrowserRouter>
     </Provider>

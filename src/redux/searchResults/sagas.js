@@ -1,4 +1,4 @@
-import { call, put, takeLatest, throttle } from 'redux-saga/effects';
+import { call, put, throttle } from 'redux-saga/effects';
 import createMovieDbClient from '../../api/movieDb';
 import { FETCH_SEARCH_RESULTS } from './types';
 import { fetchSearchResultsError, fetchSearchResultsSuccess } from './actions';

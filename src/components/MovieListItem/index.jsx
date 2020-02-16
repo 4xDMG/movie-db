@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../Button';
 import formatDate from '../../utils/formatDate';
 import { POSTER_IMAGE_BASE_URL, voteAverageToPercentage } from '../../utils';
 import './style.css';
@@ -16,13 +17,7 @@ function selectRatingBackgroundColor(voteAverage) {
 
 function MovieListItem({ movie, onClick }) {
   return (
-    <div
-      className="movie-list-item"
-      role="button"
-      tabIndex="0"
-      onClick={onClick}
-      onKeyPress={onClick}
-    >
+    <Button className="movie-list-item" onClick={onClick}>
       <div className="movie-list-item-image-container">
         <img
           alt={movie.title}
@@ -40,7 +35,7 @@ function MovieListItem({ movie, onClick }) {
       </div>
       <p>{movie.title}</p>
       <small>{formatDate(movie.release_date)}</small>
-    </div>
+    </Button>
   );
 }
 

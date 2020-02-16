@@ -1,9 +1,23 @@
-import React from 'react';
-import { func } from 'prop-types';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { searchResultsActions } from '../../redux';
 import { Logo } from '../../assets';
 import './style.css';
 
-function SearchHeader({ onChange }) {
+function SearchHeader() {
+  const dispatch = useDispatch();
+
+  const onChange = useCallback(
+    e => {
+      if (e.target.value.length) {
+        dispatch(searchResultsActions.fetchSearchResults(e.target.value));
+      } else {
+        dispatch(searchResultsActions.clearSearchResults());
+      }
+    },
+    [dispatch],
+  );
+
   return (
     <header className="search-header">
       <div className="decorative-line line-1" />
@@ -21,9 +35,5 @@ function SearchHeader({ onChange }) {
     </header>
   );
 }
-
-SearchHeader.propTypes = {
-  onChange: func.isRequired,
-};
 
 export default SearchHeader;

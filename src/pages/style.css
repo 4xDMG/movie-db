@@ -4,7 +4,8 @@
   max-width: 800px;
 }
 
-.popular-movies-list {
+.popular-movies-list,
+.search-results-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -73,4 +74,28 @@
   position: absolute;
   top: 22px;
   width: 44px;
+}
+
+.search-results-list-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.clear-button {
+  background-color: var(--brand-color);
+  border: none;
+  border-radius: 12px;
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  height: 44px;
+  padding: 0 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+.clear-button:hover {
+  transform: scale(1.05);
+  transform-origin: center;
 }
