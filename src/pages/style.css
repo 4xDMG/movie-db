@@ -59,6 +59,8 @@
 }
 
 .movie-details-info-header > small {
+  font-family: var(--header-font-family);
+  font-weight: normal;
   line-height: 21px;
 }
 

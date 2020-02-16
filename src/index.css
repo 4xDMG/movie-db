@@ -5,6 +5,7 @@
   --brand-color: rgba(1, 210, 119, 0.83);
   --text-color: #e3f4fc;
   --main-font-family: Roboto, sans-serif;
+  --header-font-family: Montserrat, sans-serif;
 }
 
 #root {
@@ -19,6 +20,12 @@ body {
   font-family: var(--main-font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* remove scrollbars Edge & IE */
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 div,
@@ -33,7 +40,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Montserrat, sans-serif;
+  font-family: var(--header-font-family);
 }
 
 h2 {

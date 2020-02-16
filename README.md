@@ -1,11 +1,17 @@
 # Movie DB
 
-## Set up
+### Notes
+
+- There were no designs for displaying search results so I took the liberty of adding a "Clear Results" button. If this button is not wanted I could remove it and determine this based on the value of the search input (`if (value === '') clearResults()`).
+- I removed scrollbars so the design would match when resizing a desktop browser down to 375px. The scrollbar takes up an extra 10px or so and pushes the design out.
+
+### Set up
 
 1. `cp .env.example .env`
-2. Fill in `.env` credentials
-3. `yarn` or `npm i` to install dependancies
-4. `yarn start` or `npm start` to run app
+2. `source .env`
+3. Fill in `.env` credentials
+4. `yarn` or `npm i` to install dependancies
+5. `yarn start` or `npm start` to run app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
