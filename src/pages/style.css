@@ -13,6 +13,10 @@
   padding-top: 6px;
 }
 
+.search-results-list {
+  margin: 0 -24px;
+}
+
 .movie-details {
   margin: auto;
   position: relative;

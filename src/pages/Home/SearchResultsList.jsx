@@ -15,26 +15,24 @@ function SearchResults() {
   }, [dispatch]);
 
   return (
-    <div className="App">
-      <section className="popular-movies-container">
-        <div className="search-results-list-header">
-          <h3>Search Results</h3>
-          <button className="clear-button" onClick={clearSearchResults}>
-            Clear Results
-          </button>
-        </div>
-        <div className="search-results-list">
-          {searchResults.loading ? <Loading /> : null}
-          {searchResults.list.map(movie => (
-            <MovieListItem
-              key={movie.id}
-              movie={movie}
-              onClick={() => history.push(`/${movie.id}`)}
-            />
-          ))}
-        </div>
-      </section>
-    </div>
+    <>
+      <div className="search-results-list-header">
+        <h3>Search Results</h3>
+        <button className="clear-button" onClick={clearSearchResults}>
+          Clear Results
+        </button>
+      </div>
+      <div className="search-results-list">
+        {searchResults.loading ? <Loading /> : null}
+        {searchResults.list.map(movie => (
+          <MovieListItem
+            key={movie.id}
+            movie={movie}
+            onClick={() => history.push(`/${movie.id}`)}
+          />
+        ))}
+      </div>
+    </>
   );
 }
 
