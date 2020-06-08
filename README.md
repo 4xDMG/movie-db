@@ -8,8 +8,8 @@
 ### Set up
 
 1. `cp .env.example .env`
-2. `source .env`
-3. Fill in `.env` credentials
+2. Fill in `.env` credentials
+3. `source .env`
 4. `yarn` or `npm i` to install dependancies
 5. `yarn start` or `npm start` to run app
 
